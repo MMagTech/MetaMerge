@@ -75,6 +75,17 @@ The JSON metadata file should have the same base name as the image file. For exa
 
 Given the following directory structure:
 
+input_folder/
+├── subfolder1/
+│ ├── image1.jpg
+│ ├── image1.jpg.json
+│ └── image2.png
+│ └── image2.png.json
+├── subfolder2/
+│ ├── image3.jpg
+│ └── image3.jpg.json
+└── image4.jpg
+└── image4.json
 
 The script will embed the metadata from `image1.jpg.json`, `image2.png.json`, `image3.jpg.json`, and `image4.json` into their corresponding images.
 
