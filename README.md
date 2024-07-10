@@ -59,3 +59,30 @@ The JSON metadata file should have the same base name as the image file. For exa
 
 Given the following directory structure:
 
+input_folder/
+├── subfolder1/
+│ ├── image1.jpg
+│ ├── image1.jpg.json
+│ └── image2.png
+│ └── image2.png.json
+├── subfolder2/
+│ ├── image3.jpg
+│ └── image3.jpg.json
+└── image4.jpg
+└── image4.json
+
+
+The script will embed the metadata from `image1.jpg.json`, `image2.png.json`, `image3.jpg.json`, and `image4.json` into their corresponding images.
+
+## Optional 
+Use the included MetaMerge.exe on Windows if you are not familiar with python. Just download it and run.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
