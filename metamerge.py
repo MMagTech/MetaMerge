@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from PIL import Image
@@ -44,7 +45,11 @@ def process_images(input_folder, output_folder):
     print(f"Processing images from {input_folder} to {output_folder}")
 
     # Initialize the log file
-    log_file_path = os.path.join(output_folder, "missing_metadata_log.txt")
+    no_metadata_folder = os.path.join(output_folder, "No MetaData")
+    log_file_path = os.path.join(no_metadata_folder, "missing_metadata_log.txt")
+    if not os.path.exists(no_metadata_folder):
+        os.makedirs(no_metadata_folder)
+
     with open(log_file_path, 'w') as log_file:
         log_file.write("Images without corresponding metadata JSON:\n\n")
 
@@ -76,6 +81,14 @@ def process_images(input_folder, output_folder):
             print(f"Metadata file not found for {image_path}")
             with open(log_file_path, 'a') as log_file:
                 log_file.write(f"{image_path}\n")
+
+            # Copy image to No MetaData folder
+            relative_path = os.path.relpath(image_path, input_folder)
+            no_metadata_image_path = os.path.join(no_metadata_folder, relative_path)
+            no_metadata_image_dir = os.path.dirname(no_metadata_image_path)
+            if not os.path.exists(no_metadata_image_dir):
+                os.makedirs(no_metadata_image_dir)
+            shutil.copy2(image_path, no_metadata_image_path)
 
         # Update progress bar
         progress_bar['value'] = count
