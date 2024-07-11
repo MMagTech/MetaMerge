@@ -87,7 +87,13 @@ input_folder/
 └── image4.jpg
 └── image4.json
 
+
 The script will embed the metadata from `image1.jpg.json`, `image2.png.json`, `image3.jpg.json`, and `image4.json` into their corresponding images.
+
+## Handling Photos Without a JSON Metadata File
+
+- Photos without corresponding JSON metadata files are not modified or saved in the output folder.
+- These photos' paths are logged in a file named `missing_metadata_log.txt` located in the output folder.
 
 ## Compiling to an Executable
 
